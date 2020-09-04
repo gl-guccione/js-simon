@@ -58,12 +58,26 @@ function isEqual(array1, array2) {
 }
 
 
+
+// function that check how many numbers two arrays have in common
+
+function qntNumbersEqual(array1, array2) {
+  var qnt = 0;
+  for (var i = 0; i < array1.length; i++) {
+    if (array1.indexOf(array2[i]) != -1) {
+      qnt++;
+    }
+  }
+  return qnt;
+}
+
+
 // script
 
 // generate 5 random numbers => pcNumbers
 var qntNumbers = 5;
 var minNumber = 1;
-var maxNumber = 10;
+var maxNumber = 25;
 var pcNumbers = arrayRandomNumbers(qntNumbers, minNumber, maxNumber);
 
 // alert the 5 numbers to the user
@@ -92,9 +106,24 @@ setTimeout(function () {
 
   var userNumbers = [];
 
-  for (var i = 0; i < qntNumbers; i++) {
-    userNumbers.push(parseInt(prompt("Inserisci il primo numero")));
+  while (userNumbers.length < qntNumbers) {
+
+    var userNumber = parseInt(prompt("Inserisci il primo numero"));
+
+    if (userNumber < minNumber || userNumber > maxNumber) {
+      alert("il numero inserito non è compreso tra " + minNumber + " e " + maxNumber);
+    } else if (isNaN(userNumber)) {
+      alert("non hai inserito un numero!!!");
+    } else if (isInside(userNumbers, userNumber)) {
+      alert("Hai già inserito questo numero");
+    } else {
+      userNumbers.push(userNumber);
+    }
+
   }
+
+  console.log(pcNumbers);
+  console.log(userNumbers);
 
   // check if the two arrays are equal
   // if true => alert - hai vinto
@@ -105,7 +134,22 @@ setTimeout(function () {
     // if false check how many correct numbers the user have insert => alert that number
   } else {
 
+    var qntCorrect = qntNumbersEqual(pcNumbers, userNumbers);
+
+    if (qntCorrect == qntNumbers) {
+      alert("Benissimo, hai indovinato tutti i numeri, purtroppo però hai sbagliato l'ordine!!!");
+    } else if (qntCorrect == (qntNumbers - 1)) {
+      alert("Molto bene, le hai prese tutte tranne una");
+    } else if (qntCorrect == 0) {
+      alert("Sei riuscito a non indovinarne neanche una...");
+      alert("La tua memoria fa così pena che probabilmente non ti ricordi nemmeno come ti chiami");
+      prompt("come ti chiami?");
+    } else if (qntCorrect < (qntNumbers/2)) {
+      alert("Continua ad allenarti, ne hai indovinate solo " + qntCorrect);
+    } else if (qntCorrect < ((qntNumbers/10) * 8)) {
+      alert("Bravo, ci sei quasi, ne hai indovinate " + qntCorrect);
+    }
   }
 
 
-}, 3000);
+}, 30000);
