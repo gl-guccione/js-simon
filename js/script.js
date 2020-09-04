@@ -41,5 +41,19 @@ function arrayRandomNumbers(quantityElementGen, minNumGen, maxNumGen) {
 }
 
 
-
 // script
+
+// generate 5 random numbers => pcNumbers
+var pcNumbers = arrayRandomNumbers(5, 1, 10);
+
+// alert the 5 numbers to the user
+
+
+// after 30 seconds ask the user to insert all the number one by one in the same order
+// and save the numbers => array => userNumbers;
+
+
+
+// check if the two arrays are equal
+// if true => alert - hai vinto
+// if false check how many correct numbers the user have insert => alert that number
