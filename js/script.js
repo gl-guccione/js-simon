@@ -83,7 +83,7 @@ var pcNumbers = arrayRandomNumbers(qntNumbers, minNumber, maxNumber);
 // alert the 5 numbers to the user
 
 alert("Ciao e benvenuto");
-alert("fra poco ti verranno mostrati 5 numeri");
+alert("fra poco ti verranno mostrati " + qntNumbers + " numeri casuali compresi tra " + minNumber + " e " + maxNumber);
 alert("memorizzali!!\nDopo 30 secondi dovrai inserirli, uno ad uno, nello stesso ordine");
 
 var listNumbers = "";
